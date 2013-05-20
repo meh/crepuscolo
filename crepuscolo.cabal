@@ -1,0 +1,18 @@
+Name:           crepuscolo
+Version:        0.0.1
+Description:    Syntax highlighting library.
+License:        LGPL
+License-file:   LICENSE
+Author:         meh.
+Maintainer:     meh@schizofreni.co
+Homepage:       https://github.com/meh/crepuscolo
+Build-Type:     Simple
+Cabal-Version:  >= 1.10
+
+Library
+  Hs-Source-Dirs: src
+  Exposed-Modules: Crepuscolo Crepuscolo.DSL Crepuscolo.Highlighter.Plain Crepuscolo.Highlighter.C
+
+  Default-Language:   Haskell2010
+  Build-Depends:      base >= 4 && < 5,
+                      regex-posix
