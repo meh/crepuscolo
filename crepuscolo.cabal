@@ -15,4 +15,4 @@ Library
 
   Default-Language:   Haskell2010
   Build-Depends:      base >= 4 && < 5,
-                      regex-posix
+                      regex-pcre
