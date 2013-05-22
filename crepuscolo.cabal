@@ -38,6 +38,7 @@ Library
                    Crepuscolo.Recognize
                    Crepuscolo.Recognize.DSL
                    Crepuscolo.Recognizer.C
+                   Crepuscolo.Recognizer.CXX
                    Crepuscolo.Recognizer.Ruby
 
   Default-Language: Haskell2010
