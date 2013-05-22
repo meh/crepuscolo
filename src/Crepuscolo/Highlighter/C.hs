@@ -6,7 +6,7 @@ import Crepuscolo
 import Crepuscolo.DSL hiding (keyword)
 import qualified Crepuscolo.DSL as DSL (keyword)
 
-highlighter :: Highlighted -> Highlighted
+highlighter :: Highlighter
 highlighter = keyword "c:statement" ["goto", "break", "return", "continue", "asm"]
           ||| keyword "c:label" ["case", "default"]
           ||| keyword "c:conditional" ["if", "else", "switch"]
