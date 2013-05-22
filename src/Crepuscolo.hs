@@ -30,7 +30,7 @@ highlight h s =
     flatten (Group c) = case map flatten c of
         (x:[])  -> x
         c'@(_:_) -> Group $ merge $ contents c'
-      where 
+      where
         isContent (Content _) = True
         isContent _           = False
 
