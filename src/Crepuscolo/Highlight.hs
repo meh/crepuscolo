@@ -1,4 +1,4 @@
-module Crepuscolo
+module Crepuscolo.Highlight
     ( Context(..)
     , Highlighted(..)
     , Highlighter
