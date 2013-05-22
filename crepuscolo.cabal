@@ -9,10 +9,33 @@ Homepage:       https://github.com/meh/crepuscolo
 Build-Type:     Simple
 Cabal-Version:  >= 1.10
 
-Library
+Executable highlight
   Hs-Source-Dirs: src
-  Exposed-Modules: Crepuscolo Crepuscolo.DSL Crepuscolo.Highlighter.Plain Crepuscolo.Highlighter.C
+  Main-Is:        highlight.hs
 
-  Default-Language:   Haskell2010
-  Build-Depends:      base >= 4 && < 5,
-                      regex-pcre
+  Default-Language: Haskell2010
+  Build-Depends:    base >= 4 && < 5,
+                    crepuscolo
+
+Executable recognize
+  Hs-Source-Dirs: src
+  Main-Is:        recognize.hs
+
+  Default-Language: Haskell2010
+  Build-Depends:    base >= 4 && < 5,
+                    crepuscolo
+
+
+Library
+  Hs-Source-Dirs:  src
+  Exposed-Modules: Crepuscolo.Highlight
+                   Crepuscolo.Highlight.DSL
+                   Crepuscolo.Highlighter.Plain
+                   Crepuscolo.Highlighter.C
+                   Crepuscolo.Recognize
+                   Crepuscolo.Recognizer.C
+                   Crepuscolo.Recognizer.Ruby
+
+  Default-Language: Haskell2010
+  Build-Depends:    base >= 4 && < 5,
+                    regex-pcre
