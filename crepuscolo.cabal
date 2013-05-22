@@ -15,7 +15,9 @@ Executable highlight
 
   Default-Language: Haskell2010
   Build-Depends:    base >= 4 && < 5,
-                    crepuscolo
+                    crepuscolo,
+                    regex-pcre,
+                    filepath
 
 Executable recognize
   Hs-Source-Dirs: src
@@ -23,8 +25,9 @@ Executable recognize
 
   Default-Language: Haskell2010
   Build-Depends:    base >= 4 && < 5,
-                    crepuscolo
-
+                    crepuscolo,
+                    regex-pcre,
+                    filepath
 
 Library
   Hs-Source-Dirs:  src
@@ -33,9 +36,11 @@ Library
                    Crepuscolo.Highlighter.Plain
                    Crepuscolo.Highlighter.C
                    Crepuscolo.Recognize
+                   Crepuscolo.Recognize.DSL
                    Crepuscolo.Recognizer.C
                    Crepuscolo.Recognizer.Ruby
 
   Default-Language: Haskell2010
   Build-Depends:    base >= 4 && < 5,
-                    regex-pcre
+                    regex-pcre,
+                    filepath

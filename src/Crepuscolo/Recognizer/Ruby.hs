@@ -5,9 +5,11 @@ module Crepuscolo.Recognizer.Ruby
     ) where
 
 import Data.List
+import Crepuscolo.Recognize.DSL
 
+recognize :: String -> IO (Maybe String)
 recognize path =
-    recognizePath path
+    return (recognizePath path)
 
 recognizePath path =
     if isSuffixOf ".rb" path

@@ -5,18 +5,22 @@ module Crepuscolo.Recognizer.C
     ) where
 
 import Data.List
+import System.FilePath
+import Crepuscolo.Recognize.DSL
 
 recognize :: String -> IO (Maybe String)
 recognize path =
-    if isSuffixOf ".c" path
-       then Just "c"
-       else
+    case takeExtension path of
+         ".c" -> return (Just "c")
+         ".h" -> readFile path >>= return . recognizeContent
+         _    -> return Nothing
 
 recognizePath :: String -> Maybe String
 recognizePath path =
-    if isSuffixOf ".c" path
-       then Just "c"
-       else Nothing
+    case takeExtension path of
+         ".c" -> Just "c"
+         ".h" -> Just "c"
+         _    -> Nothing
 
 recognizeContent string =
     undefined
