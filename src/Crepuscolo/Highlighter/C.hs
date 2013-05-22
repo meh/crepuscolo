@@ -6,8 +6,6 @@ import Crepuscolo
 import Crepuscolo.DSL hiding (keyword)
 import qualified Crepuscolo.DSL as DSL (keyword)
 
-import Text.Regex.PCRE
-
 highlighter :: Highlighted -> Highlighted
 highlighter = keyword "c:statement" ["goto", "break", "return", "continue", "asm"]
           ||| keyword "c:label" ["case", "default"]
