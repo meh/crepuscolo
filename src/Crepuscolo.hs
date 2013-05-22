@@ -9,7 +9,7 @@ module Crepuscolo
 
 import Data.List (groupBy)
 
-data Context = Keyword | Match | Region | Cluster deriving (Show, Eq)
+data Context = Keyword | Match | Region | Cluster | Custom deriving (Show, Eq)
 
 data Highlighted = Content String
                  | Group [Highlighted]
