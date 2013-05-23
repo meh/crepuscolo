@@ -20,8 +20,7 @@ region group start end =
     undefined
 
 match :: String -> String -> Highlighter
-match group regex =
-    \h -> make h
+match group regex = make
   where
     make (Group elements) =
         Group $ map make elements
@@ -36,7 +35,7 @@ match group regex =
     make x = x
 
 keyword :: String -> [String] -> String -> Highlighter
-keyword group names keywordRegex = \h -> make h
+keyword group names keywordRegex = make
   where
     make (Group elements) =
         Group $ map make elements
