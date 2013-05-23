@@ -12,6 +12,7 @@ import Text.Regex.PCRE ((=~), getAllMatches)
 (|||) :: Highlighter -> Highlighter -> Highlighter
 a ||| b = a . b
 
+inside :: String -> Highlighter -> Highlighter
 inside group highlighter =
     undefined
 
