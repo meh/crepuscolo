@@ -2,6 +2,7 @@ module Crepuscolo.Highlight
     ( Context(..)
     , Highlighted(..)
     , Highlighter
+    , Link
     , highlight
     , extend
     , dehighlight
@@ -20,6 +21,7 @@ data Highlighted = Content String
                  deriving (Show, Eq)
 
 type Highlighter = Highlighted -> Highlighted
+type Link        = (String, String)
 
 highlight :: Highlighter -> String -> Highlighted
 highlight h s =
