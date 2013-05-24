@@ -1,37 +1,37 @@
 module Crepuscolo.Recognizer.C
-    ( recognize
-    , recognizePath
-    , recognizeContent
+    ( recognizer
     ) where
 
-import Data.List
-import System.FilePath
-import Text.Regex.PCRE
-import Crepuscolo.Recognize.DSL
+import System.FilePath (takeExtension)
+import Text.Regex.PCRE ((=~))
+import qualified Crepuscolo.Recognize.DSL as DSL
 
-recognize :: String -> IO (Maybe String)
-recognize path =
-    case takeExtension path of
-         ".c" -> return (Just "c")
-         ".h" -> do
-             content <- readFile path
-             return $ if notCXX content
-                then Just "c"
-                else Nothing
+data Recognizer = C deriving (Show)
 
-         _ -> return Nothing
+instance DSL.Recognizer Recognizer where
+    recognize C path =
+        case takeExtension path of
+             ".c" -> return (Just "c")
+             ".h" -> do
+                 content <- readFile path
+                 return $ if notCXX content
+                    then Just "c"
+                    else Nothing
 
-recognizePath :: String -> Maybe String
-recognizePath path =
-    case takeExtension path of
-         ".c" -> Just "c"
-         ".h" -> Just "c"
-         _    -> Nothing
+             _ -> return Nothing
+      where
+        notCXX string = not (string =~ "\\bclass\\b") && not (string =~ "::")
 
-recognizeContent :: String -> Maybe String
-recognizeContent string =
-    if string =~ "^\\s*#include" && not (string =~ "\\bclass\\b") && not (string =~ "::")
-       then Just "c"
-       else Nothing
+    recognizePath C path =
+        case takeExtension path of
+             ".c" -> Just "c"
+             ".h" -> Just "c"
+             _    -> Nothing
 
-notCXX string = not (string =~ "\\bclass\\b") && not (string =~ "::")
+    recognizeContent C string =
+        if string =~ "^\\s*#include" && not (string =~ "\\bclass\\b") && not (string =~ "::")
+           then Just "c"
+           else Nothing
+
+recognizer :: DSL.Recognizable
+recognizer = DSL.recognizable C

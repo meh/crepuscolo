@@ -1,20 +1,23 @@
 module Crepuscolo.Recognizer.Ruby
-    ( recognize
-    , recognizePath
-    , recognizeContent
+    ( recognizer
     ) where
 
-import Data.List
-import Crepuscolo.Recognize.DSL
+import System.FilePath (takeExtension)
+import qualified Crepuscolo.Recognize.DSL as DSL
 
-recognize :: String -> IO (Maybe String)
-recognize path =
-    return (recognizePath path)
+data Recognizer = Ruby deriving (Show)
 
-recognizePath path =
-    if isSuffixOf ".rb" path
-       then Just "ruby"
-       else Nothing
+instance DSL.Recognizer Recognizer where
+    recognize Ruby path =
+        return (DSL.recognizePath Ruby path)
 
-recognizeContent string =
-    undefined
+    recognizePath Ruby path =
+        case takeExtension path of
+             ".rb" -> Just "ruby"
+             _     -> Nothing
+
+    recognizeContent Ruby string =
+        undefined
+
+recognizer :: DSL.Recognizable
+recognizer = DSL.recognizable Ruby
